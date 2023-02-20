@@ -23,6 +23,9 @@ services:
       MERCURE_URL: ${CADDY_MERCURE_URL:-http://caddy/.well-known/mercure}
       MERCURE_PUBLIC_URL: https://${SERVER_NAME:-localhost}/.well-known/mercure
       MERCURE_JWT_SECRET: ${CADDY_MERCURE_JWT_SECRET:-!ChangeThisMercureHubJWTSecretKey!}
+      #
+      MAKER_PHP_CS_FIXER_BINARY_PATH: '/srv/app/vendor/bin/php-cs-fixer'
+      MAKER_PHP_CS_FIXER_CONFIG_PATH: '.php-cs-fixer.php'
 
   caddy:
     build:

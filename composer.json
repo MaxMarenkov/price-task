@@ -16,6 +16,10 @@
         "symfony/runtime": "^6.2",
         "symfony/yaml": "^6.2"
     },
+    "require-dev": {
+        "friendsofphp/php-cs-fixer": "^3.14",
+        "symfony/maker-bundle": "^1.48"
+    },
     "config": {
         "allow-plugins": {
             "php-http/discovery": true,
@@ -53,6 +57,9 @@
         ],
         "post-update-cmd": [
             "@auto-scripts"
+        ],
+        "cs-fix": [
+            "PHP_CS_FIXER_IGNORE_ENV=1 vendor/bin/php-cs-fixer fix"
         ]
     },
     "conflict": {
