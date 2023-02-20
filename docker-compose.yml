@@ -1,6 +1,18 @@
 version: "3.4"
 
 services:
+###> doctrine/doctrine-bundle ###
+  mysql80:
+    image: mysql:8.0
+    environment:
+      MYSQL_ROOT_PASSWORD: 'foobar'
+    ports:
+      - "10108:3306"
+    volumes:
+      - data_mysql80:/var/lib/mysql
+    command: ["mysqld", "--max-allowed-packet=536870912"]
+###< doctrine/doctrine-bundle ###
+
   php:
     build:
       context: .
@@ -16,6 +28,8 @@ services:
       timeout: 3s
       retries: 3
       start_period: 30s
+    depends_on:
+      - mysql80
     environment:
       # Run "composer require symfony/orm-pack" to install and configure Doctrine ORM
       DATABASE_URL: postgresql://${POSTGRES_USER:-app}:${POSTGRES_PASSWORD:-!ChangeMe!}@database:5432/${POSTGRES_DB:-app}?serverVersion=${POSTGRES_VERSION:-14}
@@ -64,5 +78,6 @@ volumes:
   php_socket:
   caddy_data:
   caddy_config:
+  data_mysql80:
 ###> symfony/mercure-bundle ###
 ###< symfony/mercure-bundle ###

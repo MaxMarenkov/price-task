@@ -48,6 +48,7 @@ RUN apk add --no-cache \
 
 RUN set -eux; \
     install-php-extensions \
+    	pdo_mysql \
     	intl \
     	zip \
     	apcu \
