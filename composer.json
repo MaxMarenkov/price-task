@@ -68,10 +68,12 @@
             "assets:install %PUBLIC_DIR%": "symfony-cmd"
         },
         "post-install-cmd": [
-            "@auto-scripts"
+            "@auto-scripts",
+            "@prepare-db"
         ],
         "post-update-cmd": [
-            "@auto-scripts"
+            "@auto-scripts",
+            "@prepare-db"
         ],
         "prepare-db": [
             "bin/console doctrine:database:create --if-not-exists",
